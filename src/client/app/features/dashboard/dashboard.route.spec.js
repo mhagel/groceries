@@ -1,10 +1,10 @@
 /* jshint -W117, -W030 */
 describe('dashboard routes', function () {
     describe('state', function () {
-        var view = 'app/dashboard/dashboard.html';
+        var view = 'app/features/dashboard/dashboard.html';
 
         beforeEach(function() {
-            module('app.dashboard', bard.fakeToastr);
+            module('app.features.dashboard', bard.fakeToastr);
             bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
         });
 
