@@ -9,10 +9,7 @@
     /* @ngInject */
     function DashboardController($q, dataservice, logger) {
         var vm = this;
-        vm.news = {
-            title: 'groceries',
-            description: 'Hot Towel Angular is a SPA template for Angular developers.'
-        };
+
         vm.messageCount = 0;
 
         vm.title = 'Dashboard';

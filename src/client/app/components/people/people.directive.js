@@ -9,19 +9,18 @@
             restrict: 'E',
             templateUrl: 'app/components/people/people.html',
             scope: {},
-            controller: 'PeopleController',
+            controller: PeopleController,
             controllerAs: 'vm',
             bindToController: true
         };
-    };
+    }
 
     PeopleController.$inject = ['dataservice'];
     function PeopleController(dataservice) {
         var vm = this;
 
         vm.people = [];
-
-        vm.getPeople();
+        vm.getPeople = getPeople;
 
         function getPeople() {
             dataservice.getPeople()
