@@ -14,7 +14,8 @@
             },
             controller: ContainerController,
             controllerAs: 'vm',
-            bindToController: true
+            bindToController: true,
+            transclude: true //allows directives to contain other directives
         }
     }
 
