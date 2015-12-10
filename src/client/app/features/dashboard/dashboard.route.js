@@ -24,9 +24,32 @@
                     settings: {
                         nav: 1,
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    },
+                    resolve: {
+                        messageCount: messageCount,
+                        people: people,
+                        news: news
                     }
                 }
             }
         ];
+
+        messageCount.$inject = ['dataservice'];
+        function messageCount(dataservice) {
+            return dataservice.getMessageCount();
+        }
+
+        people.$inject = ['dataservice'];
+        function people(dataservice) {
+            return dataservice.getPeople();
+        }
+
+
+        function news() {
+            return {
+                title: 'news',
+                description: 'Hot Towel Angular is a SPA template for Angular developers.'
+            };
+        }
     }
 })();
