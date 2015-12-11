@@ -1,0 +1,16 @@
+<table class="table table-condensed table-striped" ng-init="vm.getList()">
+    <thead>
+    <tr>
+        <th>Item</th>
+        <th>Location</th>
+        <th>#</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in vm.list">
+        <td>{{item.name}}</td>
+        <td>{{item.section}}</td>
+        <td>{{item.amount}}</td>
+    </tr>
+    </tbody>
+</table>

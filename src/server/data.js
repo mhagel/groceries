@@ -1,16 +1,13 @@
 module.exports = {
-    people: getPeople()
+    list: getList()
 };
 
-function getPeople() {
+function getList() {
     return [
-        {id: 1, firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida'},
-        {id: 2, firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California'},
-        {id: 3, firstName: 'Colleen', lastName: 'Jones', age: 21, location: 'New York'},
-        {id: 4, firstName: 'Madelyn', lastName: 'Green', age: 18, location: 'North Dakota'},
-        {id: 5, firstName: 'Ella', lastName: 'Jobs', age: 18, location: 'South Dakota'},
-        {id: 6, firstName: 'Landon', lastName: 'Gates', age: 11, location: 'South Carolina'},
-        {id: 7, firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming'},
-        {id: 8, firstName: 'Aaron', lastName: 'Jinglehiemer', age: 22, location: 'Utah'}
+        {id: 1, name: 'Almondmilk', section: 'Dairy', amount: 1},
+        {id: 1, name: 'Tofu', section: 'Dairy', amount: 2},
+        {id: 1, name: 'Raisin Bran', section: 'Cereal', amount: 1},
+        {id: 1, name: 'Coffee', section: 'Cereal', amount: 1},
+        {id: 1, name: 'Tomatoes', section: 'Produce', amount: 3}
     ];
 }

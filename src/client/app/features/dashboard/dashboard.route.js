@@ -27,8 +27,8 @@
                     },
                     resolve: {
                         messageCount: messageCount,
-                        people: people,
-                        news: news
+                        list: list,
+                        add: add
                     }
                 }
             }
@@ -39,16 +39,16 @@
             return dataservice.getMessageCount();
         }
 
-        people.$inject = ['dataservice'];
-        function people(dataservice) {
-            return dataservice.getPeople();
+        list.$inject = ['dataservice'];
+        function list(dataservice) {
+            return dataservice.getList();
         }
 
 
-        function news() {
+        function add() {
             return {
-                title: 'news',
-                description: 'Hot Towel Angular is a SPA template for Angular developers.'
+                title: 'Add an Item',
+                description: 'Type in a grocery item here'
             };
         }
     }
