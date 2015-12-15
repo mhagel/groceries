@@ -9,7 +9,8 @@
             restrict: 'E',
             templateUrl: 'app/components/add/add.html',
             scope: {
-                add: '='
+                item: '@',
+                section: '@'
             },
             controller: AddController,
             controllerAs: 'vm',
@@ -19,6 +20,8 @@
 
     function AddController() {
         var vm = this;
+        vm.item = {};
+
     }
 
 })();
