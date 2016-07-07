@@ -1,5 +1,20 @@
 <small>{{vm.add.description}}</small>
-<form>
-    <input type="text" id="newItem" placeholder="Whatcha need?" ng-model="vm.list.name">
-    <input type="submit" value="Submit">
+<form ng-submit="vm.item">
+    <input type="text" placeholder="Whatcha need?" ng-model="vm.item.name">
+    <select class="form-control" ng-model="vm.item.section">
+      <option selected>Aisle</option>
+      <option value="dairy">Dairy</option>
+      <option value="produce">Produce</option>
+      <option value="cereal">Cereal</option>
+      <option value="bakery">Bakery</option>
+      <option value="boring">Boring Aisle</option>
+      <option value="frozen">Frozen</option>
+      <option value="pasta">Pasta</option>
+      <option value="snack">Snack</option>
+
+
+    </select>
+
+    <button class="btn" ng-click="vm.addItem()">Add to list</button>
 </form>
+{{vm.item}}
