@@ -17,9 +17,17 @@
         }
     }
 
-    function AddController() {
+    AddController.$inject = ['dataservice'];
+
+    function AddController(dataservice) {
         var vm = this;
-        
+        vm.addItem = addItem;
+
+        function addItem() {
+          dataservice.addItem(vm.item);
+          vm.item = {};
+        }
+
 
     }
 
