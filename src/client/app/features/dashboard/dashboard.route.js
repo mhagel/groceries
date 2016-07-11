@@ -26,18 +26,11 @@
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
                     },
                     resolve: {
-                        messageCount: messageCount,
-                        list: list,
-                        add: add
+                        list: list
                     }
                 }
             }
         ];
-
-        messageCount.$inject = ['dataservice'];
-        function messageCount(dataservice) {
-            return dataservice.getMessageCount();
-        }
 
         list.$inject = ['dataservice'];
         function list(dataservice) {
@@ -45,11 +38,5 @@
         }
 
 
-        function add() {
-            return {
-                title: 'Add an Item',
-                description: 'Type in a grocery item here'
-            };
-        }
     }
 })();

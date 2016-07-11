@@ -1,17 +1,25 @@
 var router = require('express').Router();
 var four0four = require('./utils/404')();
-var data = require('./data');
+var mongoUtil = require('./mongoUtil');
+mongoUtil.connect();
 
 router.get('/list', getList);
 router.get('/item/:id', getItem);
 router.get('/*', four0four.notFoundMiddleware);
+
+router.post('/list', addItem);
 
 module.exports = router;
 
 //////////////
 
 function getList(req, res, next) {
-    res.status(200).send(data.list);
+  var list = mongoUtil.list();
+  list.find().toArray(function(err, docs) {
+    console.log(JSON.stringify(docs));
+    res.status(200).send(docs.data.list);
+  })
+
 }
 
 function getItem(req, res, next) {
@@ -25,4 +33,12 @@ function getItem(req, res, next) {
     } else {
         four0four.send404(req, res, 'item ' + id + ' not found');
     }
+}
+
+function addItem(req, res) {
+  var itemName = req.params.name;
+
+  console.log("item name: ", itemName);
+
+  res.status(201);
 }
