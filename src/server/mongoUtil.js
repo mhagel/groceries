@@ -19,10 +19,5 @@ module.exports = {
 
   list() {
     return _db.collection('list');
-  },
-
-  addItem(item) {
-    console.log('mongoUtil.addItem() ' + item);
-    _db.collection('list').insertOne(item);
   }
 }

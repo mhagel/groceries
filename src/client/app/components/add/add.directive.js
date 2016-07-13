@@ -25,7 +25,7 @@
 
         function addItem() {
           dataservice.addItem(vm.item);
-          vm.item = {};
+          //vm.item = {};
           //TODO: refresh list
           //dataservice.getList();
         }

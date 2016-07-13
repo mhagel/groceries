@@ -1,13 +1,16 @@
 var router = require('express').Router();
 var four0four = require('./utils/404')();
 var mongoUtil = require('./mongoUtil');
+var bodyParser = require("body-parser");
+var jsonParser = bodyParser.json();
+
 mongoUtil.connect();
 
 router.get('/list', getList);
 router.get('/item/:id', getItem);
 router.get('/*', four0four.notFoundMiddleware);
 
-router.post('/list', addItem);
+router.post('/list', jsonParser, addItem);
 
 module.exports = router;
 
@@ -36,9 +39,10 @@ function getItem(req, res, next) {
 }
 
 function addItem(req, res) {
-
+  var item = req.IncomingMessage;
+  console.log('item body in routes.js:', item);
   var list = mongoUtil.list();
-  var set = {$set: {req.body}};
+  var set = {$set: {item}};
 
   console.log('REQUEST MADE: ', set);
 
