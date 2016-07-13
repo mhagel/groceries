@@ -13,20 +13,20 @@ module.exports = router;
 
 //////////////
 
-function getList(req, res, next) {
+function getList(req, res) {
   var list = mongoUtil.list();
   list.find().toArray(function(err, docs) {
     console.log(JSON.stringify(docs));
-    res.status(200).send(docs.data.list);
+    res.json(docs);
   })
 
 }
 
 function getItem(req, res, next) {
     var id = +req.params.id;
-    var item = data.list.filter(function(p) {
-        return p.id === id;
-    })[0];
+    // var item = data.list.filter(function(p) {
+    //     return p.id === id;
+    // })[0];
 
     if (item) {
         res.status(200).send(item);
@@ -36,9 +36,20 @@ function getItem(req, res, next) {
 }
 
 function addItem(req, res) {
-  var itemName = req.params.name;
 
-  console.log("item name: ", itemName);
+  var list = mongoUtil.list();
+  var set = {$set: {req.body}};
 
-  res.status(201);
+  console.log('REQUEST MADE: ', set);
+
+  list.insertOne(set, function(err, res) {
+    if (err) {
+
+      console.log('insert error');
+    }
+    console.log('insert success');
+  });
+
+
+
 }

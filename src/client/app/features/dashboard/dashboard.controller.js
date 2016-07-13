@@ -5,15 +5,12 @@
         .module('app.features.dashboard')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['messageCount', 'list', 'add'];
+    DashboardController.$inject = ['list'];
     /* @ngInject */
-    function DashboardController(messageCount, list, add) {
+    function DashboardController(list) {
         var vm = this;
 
-        vm.messageCount = messageCount;
         vm.list = list;
-        vm.add = add;
-
-        vm.title = 'Dashboard';
+        vm.title = 'Groceries Dashboard';
     }
 })();

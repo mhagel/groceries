@@ -33,7 +33,7 @@
         }
 
         function addItem(item) {
-          return $http.post('/api/list')
+          return $http.post('/api/list', item)
             .then(success)
             .catch(fail);
 

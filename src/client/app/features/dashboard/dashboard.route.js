@@ -33,6 +33,7 @@
         ];
 
         list.$inject = ['dataservice'];
+
         function list(dataservice) {
             return dataservice.getList();
         }

@@ -14,7 +14,7 @@
             controller: AddController,
             controllerAs: 'vm',
             bindToController: true
-        }
+        };
     }
 
     AddController.$inject = ['dataservice'];
@@ -26,6 +26,8 @@
         function addItem() {
           dataservice.addItem(vm.item);
           vm.item = {};
+          //TODO: refresh list
+          //dataservice.getList();
         }
 
 
