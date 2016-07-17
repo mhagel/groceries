@@ -33,9 +33,11 @@
         }
 
         function addItem(item) {
+          console.log('dataservice', item);
           return $http.post('/api/list', item)
             .then(success)
             .catch(fail);
+
 
           function success(response) {
             console.log("item added: " + response.data);

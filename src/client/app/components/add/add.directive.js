@@ -17,17 +17,28 @@
         };
     }
 
-    AddController.$inject = ['dataservice'];
+    AddController.$inject = ['dataservice', 'logger'];
 
-    function AddController(dataservice) {
+    function AddController(dataservice, logger) {
         var vm = this;
         vm.addItem = addItem;
 
         function addItem() {
-          dataservice.addItem(vm.item);
-          //vm.item = {};
-          //TODO: refresh list
-          //dataservice.getList();
+          dataservice.addItem(vm.item)
+            .then(success)
+            .catch(fail);
+
+            function success(response) {
+              logger.success(vm.item.name + " added to list!", response, "Success");
+              vm.item = {};
+              //TODO: reload list to list directive.
+              return response;
+            }
+
+            function fail(e) {
+              return e.message;
+            }
+
         }
 
 

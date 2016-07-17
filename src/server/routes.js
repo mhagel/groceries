@@ -39,19 +39,16 @@ function getItem(req, res, next) {
 }
 
 function addItem(req, res) {
-  var item = req.IncomingMessage;
-  console.log('item body in routes.js:', item);
+  var item = req.body;
   var list = mongoUtil.list();
-  var set = {$set: {item}};
 
-  console.log('REQUEST MADE: ', set);
-
-  list.insertOne(set, function(err, res) {
+  list.insertOne(item, function(err, docs) {
     if (err) {
-
       console.log('insert error');
+    } else {
+    console.log('insert success:', docs.result.ok === 1);
+    res.json(docs);
     }
-    console.log('insert success');
   });
 
 
