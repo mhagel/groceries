@@ -19,23 +19,23 @@ module.exports = router;
 function getList(req, res) {
   var list = mongoUtil.list();
   list.find().toArray(function(err, docs) {
-    console.log(JSON.stringify(docs));
-    res.json(docs);
+	console.log(JSON.stringify(docs));
+	res.json(docs);
   })
 
 }
 
 function getItem(req, res, next) {
-    var id = +req.params.id;
-    // var item = data.list.filter(function(p) {
-    //     return p.id === id;
-    // })[0];
+	var id = +req.params.id;
+	// var item = data.list.filter(function(p) {
+	//	 return p.id === id;
+	// })[0];
 
-    if (item) {
-        res.status(200).send(item);
-    } else {
-        four0four.send404(req, res, 'item ' + id + ' not found');
-    }
+	if (item) {
+		res.status(200).send(item);
+	} else {
+		four0four.send404(req, res, 'item ' + id + ' not found');
+	}
 }
 
 function addItem(req, res) {
@@ -43,12 +43,11 @@ function addItem(req, res) {
   var list = mongoUtil.list();
 
   list.insertOne(item, function(err, docs) {
-    if (err) {
-      console.log('insert error');
-    } else {
-    console.log('insert success:', docs.result.ok === 1);
-    res.json(docs);
-    }
+	if (err) {
+	  console.log('mongo insertOne error', err.errmsg);
+	} else {
+	  res.json(docs);
+	}
   });
 
 
