@@ -5,12 +5,11 @@
         .module('app.features.dashboard')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['list'];
+    DashboardController.$inject = ['dataservice', '$scope'];
     /* @ngInject */
-    function DashboardController(list) {
+    function DashboardController(dataservice, $scope) {
         var vm = this;
 
-        vm.list = list;
         vm.title = 'Groceries Dashboard';
     }
 })();

@@ -6,6 +6,7 @@
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];
+
     /* @ngInject */
     function appRun(routerHelper) {
         routerHelper.configureStates(getStates());
@@ -25,19 +26,15 @@
                         nav: 1,
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
                     },
-                    resolve: {
-                        list: list
+                    scope: {
+                        list: '='
                     }
+
                 }
             }
         ];
 
-        list.$inject = ['dataservice'];
-
-        function list(dataservice) {
-            return dataservice.getList();
-        }
-
+        console.log('hi',vm.list);
 
     }
 })();

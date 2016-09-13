@@ -1,4 +1,4 @@
-<table class="table table-condensed table-striped" ng-init="vm.getList()">
+<table class="table table-condensed table-striped" ng-controller="listController as vm">
     <thead>
     <tr>
         <th>Item</th>
@@ -7,10 +7,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in vm.list">
-        <td>{{item.name}}</td>
-        <td>{{item.section}}</td>
-        <td>{{item.quantity}}</td>
-    </tr>
+        <tr ng-repeat="item in vm.list">
+            <td>{{item.name}}</td>
+            <td>{{item.section}}</td>
+            <td>{{item.quantity}}</td>
+        </tr>
     </tbody>
 </table>

@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('app.components.container')
-        .directive('container', containerDirective);
+        .directive('container', containerDirective)
+        .controller('containerController', ContainerController);
 
     function containerDirective() {
         return {
@@ -10,7 +11,8 @@
             templateUrl: 'app/components/container/container.html',
             scope: {
                 title: '@',
-                color: '@'
+                color: '@',
+                list: '='
             },
             controller: ContainerController,
             controllerAs: 'vm',
@@ -19,7 +21,8 @@
         }
     }
 
-    function ContainerController() {
+    ContainerController.$inject = ['dataservice'];
+    function ContainerController(dataservice) {
         var vm = this;
 
         vm.wColor = 'w' + vm.color;
