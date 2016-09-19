@@ -4,6 +4,7 @@
         <th>Item</th>
         <th>Location</th>
         <th>#</th>
+        <th class="text-center">Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -11,6 +12,7 @@
             <td>{{item.name}}</td>
             <td>{{item.section}}</td>
             <td>{{item.quantity}}</td>
+            <td class="text-center" ng-click="vm.deleteItem(item)"><span class="glyphicon glyphicon-remove-circle"></span></td>
         </tr>
     </tbody>
 </table>

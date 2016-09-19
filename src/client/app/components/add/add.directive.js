@@ -17,13 +17,13 @@
         };
     }
 
-    AddController.$inject = ['dataservice', 'logger', '$scope'];
+    AddController.$inject = ['dataservice', 'logger'];
 
-    function AddController(dataservice, logger, $scope) {
+    function AddController(dataservice, logger) {
         var vm = this;
         vm.addItem = addItem;
         vm.getList = getList;
-        vm.list = $scope.vm.list;
+        vm.list = dataservice.list;
 
         function addItem() {
           dataservice.addItem(vm.item)
@@ -34,7 +34,7 @@
               logger.success(vm.item.name + " added to list!", response, "Success");
               vm.item = {};
               //TODO: reload list to list directive.
-              $scope.vm.list = vm.getList();
+              vm.getList();
               return response;
             }
 

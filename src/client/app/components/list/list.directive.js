@@ -11,23 +11,32 @@
             templateUrl: 'app/components/list/list.html',
             controller: ListController,
             controllerAs: 'vm',
-            bindToController: true
+            bindToController: true,
+            scope: {
+                list: '='
+            }
         };
     }
 
-    ListController.$inject = ['dataservice', '$scope'];
-    function ListController(dataservice, $scope) {
+    ListController.$inject = ['dataservice'];
+
+    function ListController(dataservice) {
         var vm = this;
 
         vm.init = init;
         vm.getList = getList;
-        vm.list = $scope.vm.list;
+        vm.deleteItem = deleteItem;
+
+        vm.list = dataservice.list;
 
         init();
+
+        console.log('listDir dslist', dataservice.list);
 
         function init() {
             getList();
         }
+
 
         function getList() {
             return dataservice.getList()
@@ -35,7 +44,22 @@
                 .catch(fail);
 
             function success(response) {
-                $scope.vm.list = response;
+                vm.list = response;
+            }
+
+            function fail(e) {
+                return e.message;
+            }
+        }
+
+        function deleteItem(item) {
+            dataservice.deleteItem(item)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                vm.list = getList();
+                console.log('Deleted' + item + '. response: ' + response);
             }
 
             function fail(e) {
