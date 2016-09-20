@@ -14,42 +14,18 @@
             bindToController: true,
             scope: {
                 list: '='
-            }
+            },
+            require: '^DashboardController'
         };
     }
 
-    ListController.$inject = ['dataservice'];
+    ListController.$inject = ['dataservice', '$scope'];
 
-    function ListController(dataservice) {
+    function ListController(dataservice, $scope) {
         var vm = this;
 
-        vm.init = init;
-        vm.getList = getList;
-        vm.deleteItem = deleteItem;
-
-        vm.list;
-
-        init();
-
-
-        function init() {
-            getList();
-        }
-
-
-        function getList() {
-            return dataservice.getList()
-                .then(success)
-                .catch(fail);
-
-            function success(response) {
-                vm.list = response;
-            }
-
-            function fail(e) {
-                return e.message;
-            }
-        }
+        vm.deleteItem = deleteItem
+        //todo: vm.list
 
         function deleteItem(item) {
             dataservice.deleteItem(item)
@@ -57,7 +33,7 @@
                 .catch(fail);
 
             function success(response) {
-                getList();
+                dataservice.getList();
                 console.log('Deleted' + item + '. response: ' + response);
             }
 

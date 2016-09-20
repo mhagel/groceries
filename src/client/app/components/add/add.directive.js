@@ -22,8 +22,6 @@
     function AddController(dataservice, logger) {
         var vm = this;
         vm.addItem = addItem;
-        vm.getList = getList;
-        vm.list = dataservice.list;
 
         function addItem() {
           dataservice.addItem(vm.item)
@@ -34,7 +32,7 @@
               logger.success(vm.item.name + " added to list!", response, "Success");
               vm.item = {};
               //TODO: reload list to list directive.
-              vm.getList();
+
               return response;
             }
 
@@ -42,20 +40,6 @@
               return e.message;
             }
 
-        }
-
-        function getList() {
-            dataservice.getList()
-                .then(success)
-                .catch(fail);
-
-                function success(response) {
-                    vm.list = response;
-                }
-
-                function fail(e) {
-                  return e.message;
-                }
         }
 
 
