@@ -57,7 +57,6 @@
 
         function deleteItem(item) {
             var id = item._id;
-            console.log('id', id);
 
             return $http.delete('/api/list/:id', id)
                 .then(success)

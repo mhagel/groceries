@@ -27,11 +27,10 @@
         vm.getList = getList;
         vm.deleteItem = deleteItem;
 
-        vm.list = dataservice.list;
+        vm.list;
 
         init();
 
-        console.log('listDir dslist', dataservice.list);
 
         function init() {
             getList();
@@ -58,7 +57,7 @@
                 .catch(fail);
 
             function success(response) {
-                vm.list = getList();
+                getList();
                 console.log('Deleted' + item + '. response: ' + response);
             }
 

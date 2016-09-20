@@ -8,7 +8,5 @@
     /* @ngInject */
     function DashboardController() {
         var vm = this;
-
-        vm.title = 'Groceries Dashboard';
     }
 })();
