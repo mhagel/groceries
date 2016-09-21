@@ -13,9 +13,11 @@
             getMessageCount: getMessageCount,
             addItem: addItem,
             deleteItem: deleteItem,
-            list: []
+            list: list
         };
 
+        var list = getList();
+        
         return service;
 
         function getMessageCount() {
@@ -28,8 +30,6 @@
                 .catch(fail);
 
             function success(response) {
-                service.list = response.data;
-                console.log('service.list', service.list);
                 return response.data;
             }
 
@@ -39,7 +39,6 @@
         }
 
         function addItem(item) {
-            console.log('dataservice', item);
             return $http.post('/api/list', item)
                 .then(success)
                 .catch(fail);
@@ -47,7 +46,6 @@
 
             function success(response) {
                 console.log("item added: " + response.data);
-                return response.data;
             }
 
             function fail(e) {
@@ -58,7 +56,7 @@
         function deleteItem(item) {
             var id = item._id;
 
-            return $http.delete('/api/list/:id', id)
+            return $http.delete('/api/list/:' + id, id)
                 .then(success)
                 .catch(fail);
 

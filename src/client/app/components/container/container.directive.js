@@ -20,8 +20,8 @@
         }
     }
 
-    ContainerController.$inject = ['dataservice'];
-    function ContainerController(dataservice) {
+    ContainerController.$inject = [];
+    function ContainerController() {
         var vm = this;
 
         vm.wColor = 'w' + vm.color;
